@@ -1,11 +1,14 @@
 package it.ferroz.parcheggio;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		DecimalFormat decimalFormat = new DecimalFormat("##.##");
 
 		Parcheggio parcheggio = new Parcheggio();
 
@@ -44,7 +47,13 @@ public class Main {
 		
 		ThreadSimulazioneParheggio t = new ThreadSimulazioneParheggio(parcheggio);
 		t.run();
-
+		
+		System.out.println("");
+		System.out.println("+++-RIEPILOGO-+++");
+		System.out.println("Cassa finale: " +  decimalFormat.format(t.getCassa()) + "€");
+		System.out.println("Numero accessi: " + t.getNumAccessi());
+		System.out.println("Numero uscite: " + t.getNumUscite());
+		Utility.stampaGiorni(t.getMinutoInterno());
 	}
 
 }

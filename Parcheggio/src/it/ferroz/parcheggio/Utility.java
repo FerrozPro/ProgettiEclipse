@@ -85,4 +85,21 @@ public class Utility {
 	static void stampaParcheggioLinea(Parcheggio parcheggio) {
 		System.out.println(parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.APERTO, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.APERTO, false) + " " + parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.CHIUSO, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.CHIUSO, false) + " " + parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.GARAGE, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.AUTO, TipoPosto.GARAGE, false) + " " +parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.APERTO, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.APERTO, false) + " " + parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.CHIUSO, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.CHIUSO, false) + " " + parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.GARAGE, true) + "-" + parcheggio.getNumPosti(TipoVeicolo.MOTO, TipoPosto.GARAGE, false));
 	}
+	
+	static void stampaGiorni(Integer minuti) {
+		int ore = 0;
+		int giorni = 0;
+		int mesi = 0;
+		int anni = 0;
+		anni = minuti / 60 / 24 / 365;
+		minuti = minuti - anni * 365 * 24 * 60;
+		mesi = minuti / 60 / 24 / 12;
+		minuti = minuti - mesi * 12 * 24 * 60;
+		giorni = minuti / 60 / 24;
+		minuti = minuti - giorni * 24 * 60;
+		ore = minuti / 60;
+		minuti = minuti - ore * 60;
+		System.out.println("Tempo trascorso: Y:" + anni + " M:" + mesi + " D:" + giorni + " H:" + ore + " M:" + minuti);
+		
+	}
 }
