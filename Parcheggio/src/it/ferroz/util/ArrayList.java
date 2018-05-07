@@ -71,6 +71,7 @@ public class ArrayList<E> implements List<E> {
 				aux = aux.getNext();
 			}
 			aux.setNext(aux.getNext().getNext());
+			length--;
 		}
 	}
 
@@ -83,6 +84,20 @@ public class ArrayList<E> implements List<E> {
 	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub
 		// ?????????????
+		Iterator<E> iterator = new Iterator<E>() {
+
+			@Override
+			public boolean hasNext() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			public E next() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
 		return null;
 	}
 
