@@ -2,6 +2,7 @@ public class Test1{
 	public void m(int n) {}
 	
 	@Overload
+	public void m(int n, boolean b){}
 	
 	/*Costruttore di default inizializza i campi con i valori di default.
 	Costruttore di dafault è pubblico, non ha parametri e ha corpo vuoto. 
@@ -53,3 +54,4 @@ public class Test1{
 	/*il metodo con extends Animale va in errore: m(T) clashes with 'm(Animale)'; both methods have same erasure (=cancellazione)
 	Overloading deve essere risolvibile anche dopo l'erasure*/
 
+}		
