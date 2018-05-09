@@ -1,12 +1,9 @@
 //Lezione 26.02.18
-
 public class C<T> {
 	
 	private T o;
 	
-	public T p(int x, float y){
-		
-	}
+	public T p(int x, float y){}
 	
 }
 
@@ -28,15 +25,15 @@ public class List{
 		m.data = e;
 	}
 	
-	public Object getHead(){ //restituisce Object perchÃ¨ la variab data Ã¨ di tipo Object
-		return n.data;       //l'idea Ã¨ che questo metodo dovrebbe restituire la testa della lista
+	public Object getHead(){ //restituisce Object perchè la variab data è di tipo Object
+		return n.data;       //l'idea è che questo metodo dovrebbe restituire la testa della lista
 	}
 
 	public static void main(String[] args){
 		List l = new List();
 		l.append(8); //l'int viene convertito in Integer che subsume Object
-		l.append(new Gatto()); //subsume Object quindi posso scriverlo - Gatto Ã¨ una sottoclasse di Object
-		Cane o = (Cane)l.getHead();  //a runtime il cast fallisce perchÃ¨ l'ultimo elemento che ho inserito Ã¨ di tipo Gatto e voglio castarlo con Cane
+		l.append(new Gatto()); //subsume Object quindi posso scriverlo - Gatto è una sottoclasse di Object
+		Cane o = (Cane)l.getHead();  //a runtime il cast fallisce perchè l'ultimo elemento che ho inserito è di tipo Gatto e voglio castarlo con Cane
 	}
 }
 
@@ -52,7 +49,7 @@ public class List<E>{
 	private Node<E> n;
 	
 	//Metodo parametrico: (= metodo localmente polimorfo)
-	public <T> void append(T e){ ... } //puÃ² essere chiamato con un tipo qualunque
+	public <T> void append(T e){ ... } //può essere chiamato con un tipo qualunque
 	
 	public E getHead(){ ... }
 	
