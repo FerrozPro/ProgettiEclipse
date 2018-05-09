@@ -1,5 +1,4 @@
 //Lezione 19.02.18
-
 public class UtilityPerAnimali{
 	
 	//Metodo polimorfo: prende un animale, ma può prendere anche un suo sottotipo
@@ -12,7 +11,7 @@ public class UtilityPerAnimali{
 	
 	public static void main(String[] args){
 		
-		UtilityPerAnimali.faiStraMangiare(new Dalmata); //INLINED: passo direttamente l'argomento senza assegnarlo a una variabile
+		UtilityPerAnimali.faiStraMangiare(new Dalmata()); //INLINED: passo direttamente l'argomento senza assegnarlo a una variabile
 		
 		//SUBSUNZIONE 1: mettere in una variabile di tipo più alto (Animale) un oggetto di tipo più basso (Dalmata)
 		Animale a = new Dalmata(); //BINDING: dare un nome a un'entità -> 1) per leggibilità 2) per riusabilità
@@ -39,17 +38,10 @@ public class UtilityPerAnimali{
 	}
 	
 	public class Animale{
-		
 		public void mangia(){ ... }
-		
 	}
 	
 	public class Cane extends Animale{
-		
 		@Override
 		public void mangia(){ ... }
-		
 	}
-	
-	
-		

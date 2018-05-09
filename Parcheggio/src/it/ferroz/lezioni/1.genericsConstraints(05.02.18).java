@@ -16,7 +16,7 @@ public class C{
 		T x; //che cosa ci posso fare? assegnarlo a un'altra variabile:
 		T y = x;
 	}
-	/*T sar√† sempre polimorfo. Non sar√† mai sostituibile con un tipo vero (es.: Integer)
+	/*T sar‡† sempre polimorfo. Non sar‡† mai sostituibile con un tipo vero (es.: Integer)
 	Se invece prendo un parametro di tipo T: */
 	
 	public <T> void m(T a){
@@ -26,15 +26,15 @@ public class C{
 	//nel main potrei scrivere:
 	C c = new C();
 	c.m(3);
-	c.m(true); //metodo m √® polimorfo, quindi lo posso usare con argomenti diversi
+	c.m(true); //metodo m Ë polimorfo, quindi lo posso usare con argomenti diversi
 }
 	
-/*All'interno di m posso usare i metodi di Object perch√® T √® tipo qlss, ma sicuramente √® almeno figlio di Object.
+/*All'interno di m posso usare i metodi di Object perchË T Ë tipo qlss, ma sicuramente Ë almeno figlio di Object.
 Quando uso variabili di tipo generico posso usare metodi di Object, ocme:
 -equals
 -hashCode
 -toString
-Se voglio, per√≤, estendere i generics per usare metodi anche di altre classi posso scrivere: <T extends C'>
+Se voglio, perÚ, estendere i generics per usare metodi anche di altre classi posso scrivere: <T extends C'>
 T pu√≤ usare i metodi della classe C', che deve essere conosciuta.*/
 
 /*In tempo run T viene sostituito con il tipo che viene dichiarato nel momento della new*/
@@ -47,11 +47,11 @@ public class MyList<T>{
 	MyList<Integer> l = new MyList<Integer>(); //tipo compatibile con il tipo della variabile l
 }
 
-public class MyList<T extends Animale>{//l non compilerebbe perch√® Integer non estende Animale
+public class MyList<T extends Animale>{//l non compilerebbe perchË Integer non estende Animale
 	
 	public T getHead(){
 		T x = h.data;
-		x.mangia(); //lo posso scrivere perch√® x √® tipo T, che estende Animale
+		x.mangia(); //lo posso scrivere perchË x Ë tipo T, che estende Animale
 		return x;
 	}
 	
@@ -59,7 +59,7 @@ public class MyList<T extends Animale>{//l non compilerebbe perch√® Integer non 
 	MyList<Gatto> l = new MyList<Gatto>();
 	Gatto g = l.getHead(); //OK
 	Animale a = l.getHead(); //OK. l.getHead() restituisce un Gatto
-	a.miagola(); //NO, perch√® √® un metodo di Gatto non di Animale
+	a.miagola(); //NO, perchË Ë un metodo di Gatto non di Animale
 	g.miagola(); //OK
 }
 
@@ -102,7 +102,7 @@ Ci tocca creare sempre una classe diversa per ogni tupla.
 
 Definisco la classe Tripla usando la classe Pair:*/
 
-public class Tripla<A,B,C> extends Pair<A,B>{ //ho esteso un tipo, non una classe. tripla √® sottotipo di coppia
+public class Tripla<A,B,C> extends Pair<A,B>{ //ho esteso un tipo, non una classe. tripla Ë sottotipo di coppia
 	private C c;
 	
 	public C getThird(){ return c;}
@@ -111,5 +111,5 @@ public class Tripla<A,B,C> extends Pair<A,B>{ //ho esteso un tipo, non una class
 	Pair<Integer, String> p = new Tripla<Integer, String, Double>(); //non posso mettere sottotipi di tipi dichiarati in Pair:
 	Pair<Animale,...> p = new Tripla<Gatto,...> //NO
 	
-	/*si pu√≤ subsumere solo sui tipi pi√π esterni (Pair, Tripla), ma non a livello pi√π interno (dentro le parentesi <>)*/
+	/*si puÚ subsumere solo sui tipi pi˘ esterni (Pair, Tripla), ma non a livello pi˘ interno (dentro le parentesi <>)*/
 }
