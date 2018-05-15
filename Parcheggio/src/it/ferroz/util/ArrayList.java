@@ -37,35 +37,43 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public void addAll(List<E> list) {
-		for (E elem : list) {
-			add(elem);
+		// for (E elem : list) {
+		// add(elem);
+		// }
+		for (Iterator<E> iterator = list.iterator(); iterator.hasNext();) {
+			E e = iterator.next();
+			add(e);
 		}
 	}
 
 	@Override
-	public E getHead() {
+	public E getHead() throws NotFoundException {
 		return findElemByPosition(0);
 	}
 
 	@Override
-	public E getTail() {
+	public E getTail() throws NotFoundException {
 		return findElemByPosition(length);
 	}
 
 	@Override
-	public E findElemByPosition(Integer position) {
+	public E findElemByPosition(Integer position) throws NotFoundException {
 		Node<E> aux = head;
 		while (--position != 0) {
-			aux = aux.getNext();
+			if (aux.hasNext()) {
+				aux = aux.getNext();
+			} else {
+				throw new NotFoundException();
+			}
 		}
 		return aux.getValue();
 	}
 
 	@Override
-	public void remove(Integer position) throws Exception{
+	public void remove(Integer position) throws IndexOutOfBoundException {
 		if (position > length) {
 			throw new IndexOutOfBoundException();
-		}else {
+		} else {
 			Node<E> aux = head;
 			while (--position != 1) {
 				aux = aux.getNext();
@@ -82,23 +90,25 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		// ?????????????
-		Iterator<E> iterator = new Iterator<E>() {
+		return new Iterator<E>() {
+
+			private Integer position = 0;
 
 			@Override
 			public boolean hasNext() {
-				// TODO Auto-generated method stub
-				return false;
+				return position < size();
 			}
 
 			@Override
 			public E next() {
-				// TODO Auto-generated method stub
-				return null;
+				try {
+					return findElemByPosition(++position);
+				} catch (NotFoundException e) {
+					e.printStackTrace();
+					throw new RuntimeException("iterator.next() failed");
+				}
 			}
 		};
-		return null;
 	}
 
 }
