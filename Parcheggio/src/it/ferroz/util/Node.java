@@ -1,6 +1,6 @@
 package it.ferroz.util;
 
-public class Node<E> {
+public class Node<E> implements Comparable<Node<E>>{
 	
 	private E value;
 	
@@ -40,5 +40,11 @@ public class Node<E> {
 	public boolean hasNext() {
 		return next != null;
 	}
+
+	@Override
+	public int compare(Node<E> o) {
+		return this.getPosition() <= o.getPosition() ? 1 : 0;
+	}
+
 	
 }

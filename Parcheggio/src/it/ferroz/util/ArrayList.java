@@ -2,7 +2,7 @@ package it.ferroz.util;
 
 import java.util.Iterator;
 
-public class ArrayList<E> implements List<E> {
+public class ArrayList<E extends Comparable<E>> implements List<E> {
 
 	private Integer length;
 
@@ -22,21 +22,64 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	@Override
-	public void add(E elem) {
-		if (head != null) {
-			Node<E> aux = head;
-			while (aux.hasNext()) {
-				aux = aux.getNext();
-			}
-			aux.setNext(new Node<E>(elem, aux.getPosition() + 1));
-		} else {
-			head = new Node<E>(elem, 0);
-		}
-		this.length++;
+	public Boolean add(E elem) {
+		return add(elem, size());
+//		if (head != null) {
+//			Node<E> aux = head;
+//			while (aux.hasNext()) {
+//				aux = aux.getNext();
+//			}
+//			aux.setNext(new Node<E>(elem, aux.getPosition() + 1));
+//		} else {
+//			head = new Node<E>(elem, 0);
+//		}
+//		this.length++;
+//		return true;
 	}
 
 	@Override
-	public void addAll(List<E> list) {
+	public Boolean add(E elem, Integer position) {
+		Node<E> node = new Node<E>(elem, position);
+		if (head != null && position < size()) {
+			Node<E> aux = head;
+			while (aux.hasNext()) {
+				if (aux.compare(node) == 1) {
+					aux = aux.getNext();
+				} else {
+					node.setNext(aux.getNext());
+					aux.setNext(node);
+					aux = aux.getNext();
+					aux.setPosition(aux.getPosition() + 1);
+				}
+			}
+			return true;
+		}
+		return false;
+
+//		if (head != null && position < size()) {
+//			Node<E> aux = head;
+//			while (aux.hasNext() && --position >= 0) {
+//				aux = aux.getNext();
+//				--position;
+//			}
+//			if (position == 0) {
+//				Node<E> node = new Node<E>(elem, aux.getPosition() + 1);
+//				node.setNext(aux.getNext());
+//				aux.setNext(node);
+//				aux = aux.getNext();
+//				while (aux.hasNext()) {
+//					aux.setPosition(aux.getPosition() + 1);
+//					aux = aux.getNext();
+//				}
+//				this.length++;
+//				return true;
+//			}
+//		}
+//		return false;
+	}
+
+	@Override
+	public Boolean addAll(List<E> list) {
 		// for (E elem : list) {
 		// add(elem);
 		// }
@@ -44,6 +87,7 @@ public class ArrayList<E> implements List<E> {
 			E e = iterator.next();
 			add(e);
 		}
+		return true;
 	}
 
 	@Override
@@ -85,7 +129,7 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public Integer size() {
-		return length;
+		return this.length;
 	}
 
 	@Override

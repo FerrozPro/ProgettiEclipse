@@ -4,9 +4,11 @@ public interface List<E> extends Iterable<E>{
 
 	public boolean isEmpty();
 
-	public void add(E elem);
+	public Boolean add(E elem);
+	
+	public Boolean add(E elem, Integer position);
 
-	public void addAll(List<E> list);
+	public Boolean addAll(List<E> list);
 
 	public E getHead() throws Exception;
 	
