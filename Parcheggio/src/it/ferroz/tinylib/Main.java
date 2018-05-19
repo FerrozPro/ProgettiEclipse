@@ -96,7 +96,6 @@ public class Main {
 
 	// pretty printers
 	//
-
 	public static void print(MySequence<?> l) {
 		StringBuilder b = new StringBuilder();
 		try {

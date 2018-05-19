@@ -16,13 +16,6 @@ public class MyNodeList<E> implements MyList<E> {
 	public int size() {
 		return size;
 	}
-	
-	public void setSize(int size) {
-		this.size = size;
-	}
-	public static void setSize(MyNodeList<?> l, int size) {
-		l.setSize(size);
-	}
 
 	public void insertHead(E data) {
 		try {
