@@ -2,16 +2,28 @@ package it.ferroz.util;
 
 import java.util.Iterator;
 
-public class Map<E> implements List<E> {
+public class OrderedList<E> implements List<E> {
 
-	private MapNode<K,V> head;
-	
-	private Integer length;
-	
-	public Map() {
-		this.length = 0;
+	private Node<E> head;
+
+	private Integer lenght;
+
+	public OrderedList() {
+		this.lenght = 0;
 	}
-	
+
+	public Integer getLenght() {
+		return lenght;
+	}
+
+	public void setLenght(Integer lenght) {
+		this.lenght = lenght;
+	}
+
+	public void setHead(Node<E> head) {
+		this.head = head;
+	}
+
 	@Override
 	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub
@@ -63,7 +75,7 @@ public class Map<E> implements List<E> {
 	@Override
 	public void remove(Integer position) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -71,6 +83,5 @@ public class Map<E> implements List<E> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

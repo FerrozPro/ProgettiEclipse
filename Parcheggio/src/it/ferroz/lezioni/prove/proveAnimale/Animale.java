@@ -2,7 +2,15 @@ package it.ferroz.lezioni.prove.proveAnimale;
 
 public class Animale {
 
-	protected int food = 0;
+	protected int food;
+	
+	public Animale() {
+		food = 0;
+	}
+	
+	public Animale(int food) {
+		this.food = food;
+	}
 	
 	public void mangia() {
 		food = food + 10;
@@ -11,4 +19,9 @@ public class Animale {
 	public int getFood() {
 		return food;
 	}
+	
+	public void tipo() {
+		System.out.println("Animale");
+	}
+	
 }
