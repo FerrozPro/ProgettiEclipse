@@ -23,6 +23,8 @@ public class MyNodeList<E> implements MyList<E> {
 		} catch (NotFoundException e) {
 			e.printStackTrace();
 		}
+//		head = new MyNode<>(data, head);
+		
 	}
 
 	public void insertAt(int position, E data) throws NotFoundException {

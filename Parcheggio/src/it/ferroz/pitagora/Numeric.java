@@ -1,4 +1,4 @@
-package it.unive.dais.po.pitagora;
+package it.ferroz.pitagora;
 
 public interface Numeric {
 
